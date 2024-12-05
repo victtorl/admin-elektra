@@ -1,6 +1,6 @@
 <template>
 
-  <div class="w-full min-h-[100vh]   p-6">
+  <div class="w-full h-full   p-6">
       <p class="mb-2 bg-elecktranegro text-elecktraamarillo font-semibold rounded-lg text-center py-1 ">CREAR PRODUCTO NUEVO</p>
       <div class="grid grid-cols-2 gap-x-6" >
         <div class="flex flex-col gap-y-4">

@@ -20,7 +20,7 @@
         </div> 
         <div>
             <label for="codigo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">¿Está en oferta?</label>
-            <fwb-checkbox v-model="check" :label="`${check?'SI':'NO'}`" /> {{ check }}
+            <fwb-checkbox v-model="check" :label="`${check?'SI':'NO'}`" /> 
         </div>   
     </div>
 </form>

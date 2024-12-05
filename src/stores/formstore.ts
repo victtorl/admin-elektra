@@ -12,7 +12,8 @@ interface IProduct{
   marca:string,
   codigo:string
   medida:string,
-  imagenes:Iimages[]
+  imagenes:Iimages[],
+  oferta:boolean,
 }
 
 

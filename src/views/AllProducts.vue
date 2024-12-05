@@ -28,7 +28,7 @@
 
             <!-- CARD 3 -->
             <div  v-for="item in prodST.groupProducts" class="rounded overflow-hidden shadow-lg bg-white flex flex-col ">
-                <a  class="font-medium text-lg leading-5 text-center hover:text-black transition duration-500 pt-2 pb-1 ease-in-out inline-bloc">
+                <a  class="font-medium text-lg leading-5 text-center hover:text-black transition duration-500 pt-2 pb-1 ease-in-out inline-block">
                     {{ item.data.marca }}
                 </a>
                 <div class="relative"><a href="#">

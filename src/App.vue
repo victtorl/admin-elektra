@@ -107,7 +107,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import {
   Dialog,
   DialogPanel,
@@ -137,6 +137,7 @@ import {
 } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import { useRoute } from 'vue-router';
+import { useProductStore } from './stores/formstore';
 
 const navigation = [
   { name: 'Todos los productos', href: '/', icon: NumberedListIcon, current: true },
@@ -156,6 +157,12 @@ const sidebarOpen = ref(false)
 
 const route=useRoute()
 
+watch(()=>route.path,() => {
+   //valida que un usuario si cambia de ruta no quede restos de imagenes en ls ||evaluar
+    const prodST=useProductStore()
+    prodST.clearimagess()
+    console.log(route.fullPath)
+})
 
 
 </script>

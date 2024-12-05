@@ -40,6 +40,7 @@ const imagenes=ref([])
 
 
 
+
 const rules = computed(() => {
     return {
         nombre: {required},
@@ -62,7 +63,7 @@ const enviarDatos=() => {
   codigo.value=prodST.newProduct.codigo
   medida.value=prodST.newProduct.medida
   imagenes.value=prodST.newProduct.imagenes
-
+  oferta.value=prodST.newProduct.oferta
 
   v$.value.$touch();
   if (!v$.value.$error) {

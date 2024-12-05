@@ -83,6 +83,7 @@ import InputsPageEdit from '../components/cmputils/InputsPageEdit.vue'
     //   alert('llenar todos los campos o cargar las imagenes');  
     // }
     editProductxId(prodST.editProduct.id,prodST.editProduct.data)
+    prodST.clearimagess()
     //eliminar de ls
   }
   

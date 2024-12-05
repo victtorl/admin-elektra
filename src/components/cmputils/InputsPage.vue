@@ -17,7 +17,11 @@
         <div>
             <label for="codigo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Medida</label>
             <input type="text" id="medida" v-model="medida" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
-        </div>  
+        </div> 
+        <div>
+            <label for="codigo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">¿Está en oferta?</label>
+            <fwb-checkbox v-model="check" :label="`${check?'SI':'NO'}`" /> {{ check }}
+        </div>   
     </div>
 </form>
 </template>
@@ -27,6 +31,7 @@
 import { watch,ref } from 'vue';
 import {useProductStore} from '../../stores/formstore'
 import { ismatchName } from '../../../firebase';
+import { FwbCheckbox } from 'flowbite-vue'
 
 
 const prodST=useProductStore()
@@ -35,24 +40,25 @@ const marca=ref('')
 const nombre=ref('')
 const codigo=ref()
 const medida=ref()
+const check = ref(false)
 
 
-watch([marca,nombre,codigo,medida],() => {
+watch([marca,nombre,codigo,medida,check],() => {
 
     prodST.setnewProduct({
         'marca':marca.value,
         'nombre':nombre.value,
         'codigo':codigo.value,
-        'medida':medida.value
+        'medida':medida.value,
+        'oferta':check.value
     })
     
 })
 
 const varmatch=ref(false)
+
 watch(nombre,()=>{
-
     PromesaGood()
-
 })
 
 

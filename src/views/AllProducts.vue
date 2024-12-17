@@ -23,7 +23,7 @@
         </div>
 
 
-        <div class="grid grid-cols-1 sm:grid-cols-3  md:grid-cols-3 lg:grid-cols-4  gap-10">
+        <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3  md:grid-cols-3 lg:grid-cols-4  gap-10">
 
 
             <!-- CARD 3 -->

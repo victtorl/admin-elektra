@@ -1,21 +1,25 @@
 <template>
     <div>
 
-        <div class="grid grid-cols-1 gap-x-6 font-popi" >
+        <div class="grid grid-cols-1 gap-x-6 font-popi pt-4" >
             <div class="flex flex-col gap-y-4">
 
-                <div class="grid gap-6 mb-6 md:grid-cols-1">
+                <div class="w-full border-t-2 border-gray-500" ></div>
+
+                    <div class="grid gap-6 mb-6 md:grid-cols-1">
 
                     <div class="grid md:grid-cols-2 gap-x-4" >
                         <div>
-                            <label for="marca" class="block mb-1   text-sm/4 font-semibold text-gray-900 dark:text-white">Misión de mierda</label>
+                            <label for="marca" class="block mb-1   text-sm/4 font-semibold text-gray-900 dark:text-white">Misión</label>
                             <textarea id="story" name="story"  v-model="mainST.state.mision" rows="8" cols="33" class="bg-gray-50 border border-gray-300  text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0 mt-2" placeholder="Descripción Misión" ></textarea>
                         </div>
                         <div>
                             <p class="mt-3 md:mt-0 text-sm/4 font-semibold text-gray-900 group-hover:text-gray-600"  >Misión</p>
-                            <p class="w-full  py-3 text-sm">-{{ mainST.state.mision }}</p>
+                            <p class="w-full  py-3 text-sm">{{ mainST.state.mision }}</p>
                         </div>
                     </div>
+
+                    <div class="w-full border-t-2 border-gray-500" ></div>
 
                     <div class="grid md:grid-cols-2 gap-x-4">
                         <div>
@@ -24,9 +28,11 @@
                         </div>
                         <div>
                             <p class="mt-3 md:mt-0 text-sm/4 font-semibold text-gray-900 group-hover:text-gray-600"  >Visión</p>
-                            <p class="w-full  py-3 text-sm">-{{ mainST.state.vision }}</p>
+                            <p class="w-full  py-3 text-sm">{{ mainST.state.vision }}</p>
                         </div>
                     </div>
+
+                    <div class="w-full border-t-2 border-gray-500" ></div>
 
                     <div class="grid md:grid-cols-2 gap-x-4 ">
                         <div>
@@ -48,10 +54,12 @@
                                     <p class="mt-3 md:mt-0 text-lg/2 font-semibold text-gray-900 group-hover:text-gray-600" >{{ item.title }} </p>
                                     <div @click="mainST.eliminarItemV(item.title)" class="text-xl  cursor-pointer text-red-700 font-bold px-4"> x</div>
                                 </div>
-                                <p class="line-clamp-2  text-sm/8 text-black " >{{ item.description }}</p>
+                                <p class="leading-4  text-sm/8 text-black " >{{ item.description }}</p>
                             </div>
                         </div>
                     </div>
+
+                    <div class="w-full border-t-2 border-gray-500" ></div>
 
                     <div class="grid md:grid-cols-2  gap-x-4" >
                         <div>
@@ -73,11 +81,13 @@
                                     <p class="mt-3 md:mt-0 text-lg/2 font-semibold text-gray-900 group-hover:text-gray-600" >{{ item.title }} </p>
                                     <div @click="mainST.eliminarItemC(item.title)" class="text-xl  cursor-pointer text-red-700 font-bold px-4"> x</div>
                                 </div>
-                                <p class="line-clamp-2  text-sm/8 text-black " >{{ item.description }}</p>
+                                <p class="leading-4 text-sm/8 text-black " >{{ item.description }}</p>
                             </div>
                         </div>
 
                     </div>
+
+                    <div class="w-full border-t-2 border-gray-500" ></div>
 
                     <div class="grid md:grid-cols-2 mt-6 gap-x-4">
                         <div>
@@ -90,6 +100,8 @@
                         <p class="text-sm  py-3 md:py-4">{{ mainST.state.contacto.telefono }}</p>
                         </div>
                     </div>
+
+        
 
                     <div class="grid md:grid-cols-2 gap-x-4">
                         <div>

@@ -2,20 +2,20 @@
     <div>
 
         <div class="grid grid-cols-1 gap-x-6 font-popi pt-4" >
-            <div class="flex flex-col gap-y-4">
+            <div class="flex flex-col gap-y-4 ">
 
-                <div class="w-full border-t-2 border-gray-500" ></div>
+                   <div class="w-full border-t-2 border-gray-500" ></div>
 
                     <div class="grid gap-6 mb-6 md:grid-cols-1">
 
                     <div class="grid md:grid-cols-2 gap-x-4" >
                         <div>
                             <label for="marca" class="block mb-1   text-sm/4 font-semibold text-gray-900 dark:text-white">Misión</label>
-                            <textarea id="story" name="story"  v-model="mainST.state.mision" rows="8" cols="33" class="bg-gray-50 border border-gray-300  text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0 mt-2" placeholder="Descripción Misión" ></textarea>
+                            <textarea id="story" name="story"  v-model="mainST.state.mision" rows="8" cols="33" class="bg-gray-50 border border-gray-300  text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0 mt-2" placeholder="Descripción Misión" ></textarea>
                         </div>
                         <div>
                             <p class="mt-3 md:mt-0 text-sm/4 font-semibold text-gray-900 group-hover:text-gray-600"  >Misión</p>
-                            <p class="w-full  py-3 text-sm">{{ mainST.state.mision }}</p>
+                            <p class=" w-72 prevsm:w-full  py-3 text-sm">{{ mainST.state.mision }}</p>
                         </div>
                     </div>
 
@@ -24,11 +24,11 @@
                     <div class="grid md:grid-cols-2 gap-x-4">
                         <div>
                         <label for="marca" class="block mb-1 text-sm/4 font-semibold text-gray-900 dark:text-white">Visión</label>
-                        <textarea id="story" name="story"  v-model="mainST.state.vision" rows="8" cols="33" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0 mt-2" placeholder="Descripción Visión" ></textarea>
+                        <textarea id="story" name="story"  v-model="mainST.state.vision" rows="8" cols="33" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0 mt-2" placeholder="Descripción Visión" ></textarea>
                         </div>
                         <div>
                             <p class="mt-3 md:mt-0 text-sm/4 font-semibold text-gray-900 group-hover:text-gray-600"  >Visión</p>
-                            <p class="w-full  py-3 text-sm">{{ mainST.state.vision }}</p>
+                            <p class="w-72 prevsm:w-full  py-3 text-sm">{{ mainST.state.vision }}</p>
                         </div>
                     </div>
 
@@ -37,8 +37,8 @@
                     <div class="grid md:grid-cols-2 gap-x-4 ">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm/4 font-semibold text-gray-900 dark:text-white">Valores</label>
-                        <input type="text" id="nombre"    v-model="itemvalor.title"  class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Titulo" required />
-                        <textarea id="story" name="story" v-model="itemvalor.description" rows="3" cols="33" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0 mt-4" placeholder="Descripción" ></textarea>
+                        <input type="text" id="nombre"    v-model="itemvalor.title"  class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Titulo" required />
+                        <textarea id="story" name="story" v-model="itemvalor.description" rows="3" cols="33" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0 mt-4" placeholder="Descripción" ></textarea>
                         <button
                             @click="agregarValor"
                             type="button"
@@ -50,11 +50,11 @@
                         <div >
                             <p class="mt-3 md:mt-0 text-sm/4 font-semibold text-gray-900 group-hover:text-gray-600"  >Valores</p>
                             <div class="py-2 md:py-0 md:pt-2 text-sm " v-for="item in mainST.state.itemsvalores" >
-                                <div class="flex items-center justify-between w-full">
+                                <div class="flex items-center justify-between w-72 prevsm:w-full">
                                     <p class="mt-3 md:mt-0 text-lg/2 font-semibold text-gray-900 group-hover:text-gray-600" >{{ item.title }} </p>
-                                    <div @click="mainST.eliminarItemV(item.title)" class="text-xl  cursor-pointer text-red-700 font-bold px-4"> x</div>
+                                    <div @click="selectItemDeleteV(item)" class="text-xl  cursor-pointer text-red-700 font-bold px-4"> x</div>
                                 </div>
-                                <p class="leading-4  text-sm/8 text-black " >{{ item.description }}</p>
+                                <p class="leading-4  text-sm/8 text-black w-72 prevsm:w-full" >{{ item.description }}</p>
                             </div>
                         </div>
                     </div>
@@ -64,8 +64,8 @@
                     <div class="grid md:grid-cols-2  gap-x-4" >
                         <div>
                         <label for="nombre" class="block mb-2 text-sm/4 font-semibold text-gray-900 dark:text-white">¿Por que confiar en Nosotros?</label>
-                        <input type="text" id="nombre"    v-model="itemconfianza.title"  class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Titulo" required />
-                        <textarea id="story" name="story" v-model="itemconfianza.description"  rows="3" cols="33" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0 mt-4" placeholder="Descripción" ></textarea>
+                        <input type="text" id="nombre"    v-model="itemconfianza.title"  class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Titulo" required />
+                        <textarea id="story" name="story" v-model="itemconfianza.description"  rows="3" cols="33" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0 mt-4" placeholder="Descripción" ></textarea>
                         <button
                             @click="agregarConfianza"
                             type="button"
@@ -77,11 +77,11 @@
                         <div class="mt-4 md:mt-0">
                             <p class="mt-3 md:mt-0 text-sm/4 font-semibold text-gray-900 group-hover:text-gray-600"  >¿Por que confiar en nosotros?</p>
                             <div class="py-2 md:py-0 md:pt-2 text-sm " v-for="item in mainST.state.itemsconfianza" >
-                                <div class="flex items-center justify-between w-full">
+                                <div class="flex items-center justify-between w-72 prevsm:w-full">
                                     <p class="mt-3 md:mt-0 text-lg/2 font-semibold text-gray-900 group-hover:text-gray-600" >{{ item.title }} </p>
-                                    <div @click="mainST.eliminarItemC(item.title)" class="text-xl  cursor-pointer text-red-700 font-bold px-4"> x</div>
+                                    <div @click="selectItemDeleteC(item)" class="text-xl  cursor-pointer text-red-700 font-bold px-4"> x</div>
                                 </div>
-                                <p class="leading-4 text-sm/8 text-black " >{{ item.description }}</p>
+                                <p class="leading-4 text-sm/8 text-black w-72 prevsm:w-full " >{{ item.description }}</p>
                             </div>
                         </div>
 
@@ -92,7 +92,7 @@
                     <div class="grid md:grid-cols-2 mt-6 gap-x-4">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm/4 font-semibold text-gray-900 dark:text-white">Teléfono</label>
-                        <input type="text" id="telefono" v-model="mainST.state.contacto.telefono"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Teléfono" required />
+                        <input type="text" id="telefono" v-model="mainST.state.contacto.telefono"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Teléfono" required />
                         </div>
 
                         <div>
@@ -106,7 +106,7 @@
                     <div class="grid md:grid-cols-2 gap-x-4">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm/4 font-semibold text-gray-900 dark:text-white">Correo</label>
-                        <input type="text" id="correo" v-model="mainST.state.contacto.correo"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Correo" required />
+                        <input type="text" id="correo" v-model="mainST.state.contacto.correo"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Correo" required />
                         </div>
 
                         <div>
@@ -119,12 +119,12 @@
                     <div class="grid md:grid-cols-2 gap-x-4">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm/4 font-semibold text-gray-900 dark:text-white">Facebook</label>
-                        <input type="text" id="facebook" v-model="mainST.state.contacto.facebook"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Facebook" required />
+                        <input type="text" id="facebook" v-model="mainST.state.contacto.facebook"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Facebook" required />
                         </div>
 
                         <div>
                         <p class="mt-3 md:mt-0 text-sm/4 font-semibold text-gray-900 group-hover:text-gray-600"  >Facebook</p>
-                        <p class="text-sm py-3 md:py-4">{{ mainST.state.contacto.facebook }}</p>
+                        <p class="text-sm py-3 md:py-4 overflow-x-scroll prevsm:overflow-x-hidden ">{{ mainST.state.contacto.facebook }}</p>
                         </div>
                     </div>
 
@@ -133,12 +133,12 @@
                     <div class="grid md:grid-cols-2 gap-x-4">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm/4 font-semibold text-gray-900 dark:text-white">Instagram</label>
-                        <input type="text" id="instagram" v-model="mainST.state.contacto.instagram"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Instagram" required />
+                        <input type="text" id="instagram" v-model="mainST.state.contacto.instagram"  class="mb-2 overflow-x-scroll bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Instagram" required />
                         </div>
 
-                        <div>
+                        <div class="w-72 prevsm:w-full">
                         <p class="mt-3 md:mt-0 text-sm/4 font-semibold text-gray-900 group-hover:text-gray-600"  >Instagram</p>
-                        <p class="text-sm  py-3 md:py-4">{{ mainST.state.contacto.instagram }}</p>
+                        <p class="text-sm  py-3 md:py-4 overflow-x-scroll prevsm:overflow-x-hidden ">{{ mainST.state.contacto.instagram }}</p>
                         </div>
                     </div>
 
@@ -146,7 +146,7 @@
                     <div class="grid md:grid-cols-2 gap-x-4">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm/4 font-semibold text-gray-900 dark:text-white">Direccion</label>
-                        <input type="text" id="instagram" v-model="mainST.state.contacto.direccion"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Direcion" required />
+                        <input type="text" id="instagram" v-model="mainST.state.contacto.direccion"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Direcion" required />
                         </div>
 
                         <div>
@@ -159,12 +159,12 @@
                     <div class="grid md:grid-cols-2 gap-x-4 ">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm/4 font-semibold text-gray-900 dark:text-white">Url Youtube</label>
-                        <input type="text" id="Youtube URL" v-model="mainST.state.contacto.urlyoutube"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Youtube URL" required />
+                        <input type="text" id="Youtube URL" v-model="mainST.state.contacto.urlyoutube"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Youtube URL" required />
                         </div>
 
                         <div>
                         <p class="mt-3 md:mt-0 text-sm/4 font-semibold text-gray-900 group-hover:text-gray-600"  >Url Youtube</p>
-                        <p class="text-sm  py-3 md:py-4">{{ mainST.state.contacto.urlyoutube }}</p>
+                        <p class="text-sm  py-3 md:py-4 w-72 prevsm:w-full">{{ mainST.state.contacto.urlyoutube }}</p>
                         </div>
                     </div>
 
@@ -194,11 +194,47 @@
 
         </div>    
     </div>
+
+
+
+
+
+        <!-- //init modal -->
+        <fwb-modal v-if="isShowModal" @close="closeModal">
+            <template #header>
+            <div class="flex items-center text-center text-lg">
+                {{ itemdelete.data.title}}
+            </div>
+            </template>
+            <template #body>
+            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                ¿Esta seguro que dese eliminar este item de la lista? 
+            </p>
+            </template>
+            <template #footer>
+            <div class="flex justify-between">
+                <fwb-button @click="closeModal" color="alternative">
+                No
+                </fwb-button>
+                <span @click="closeModal" class="">
+                    <fwb-button  v-if="itemdelete.val=='v'" @click="mainST.eliminarItemV(itemdelete.data.title)" color="red">
+                        Si eliminar item valor
+                    </fwb-button>
+                    <fwb-button  v-if="itemdelete.val=='c'" @click="mainST.eliminarItemC(itemdelete.data.title)" color="red">
+                        Si eliminar item confianza
+                    </fwb-button>
+                </span>
+            </div>
+            </template>
+        </fwb-modal>
+        <!-- //end modal -->
+
     </template>
     
     
     <script setup>
     import { initFlowbite } from 'flowbite'
+    import { FwbButton, FwbModal } from 'flowbite-vue'
     import { watch,ref,reactive,onMounted } from 'vue';
     import { useMainStore } from '../../stores/contentstore';
     import { cargarContenidoCloud, crearDocumentoContenido, editContenidoxId, } from '../../../firebase';
@@ -310,6 +346,31 @@
     }
     
 
+
+
+    //modal
+    const itemdelete=ref()
+    const isShowModal = ref(false)
+    function closeModal () {
+    isShowModal.value = false
+    }
+    function showModal () {
+    isShowModal.value = true
+    }
+    const selectItemDeleteV=(itmselect) => {
+    showModal()
+    itemdelete.value={
+        data:itmselect,
+        val:'v'
+    }
+    }
+    const selectItemDeleteC=(itmselect) => {
+    showModal()
+    itemdelete.value={
+        data:itmselect,
+        val:'c'
+    }
+    }
     
     
     </script>

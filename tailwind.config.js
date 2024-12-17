@@ -9,8 +9,10 @@ export default {
   ],
   theme: {
     screens:{
+      'pek':'250px',
       'xxs':'280px',
       'xs':'350px',
+      'prevsm':'400px',
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
       'md': '768px',

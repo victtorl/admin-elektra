@@ -1,6 +1,6 @@
 <template>
 
-    <div class="w-full h-full   p-6">
+    <div class="w-full h-full  font-popi p-6">
   
       <p class="mb-2 bg-elecktranegro text-elecktraamarillo font-semibold rounded-lg text-center py-1 ">EDITAR PRODUCTO</p>
 

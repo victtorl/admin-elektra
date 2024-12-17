@@ -1,5 +1,5 @@
 <template>
-    <div class=" p-5 sm:p-10 md:p-16 bg-elecktranegro/30  ">
+    <div class=" p-5 sm:p-10 md:p-16 bg-elecktranegro/30 font-popi ">
 
 <div class="border-b mb-5 flex justify-between text-sm pt-36 ">
     <div class="text-black flex items-center pb-2 pr-2 border-b-2 border-black uppercase">

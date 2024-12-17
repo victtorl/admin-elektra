@@ -6,7 +6,7 @@
 
                 <div class="grid gap-6 mb-6 md:grid-cols-1">
 
-                    <div class="grid grid-cols-2 gap-x-2" >
+                    <div class="grid md:grid-cols-2 gap-x-2" >
                         <div>
                             <label for="marca" class="block mb-1  text-sm font-medium text-gray-900 dark:text-white">Misión</label>
                             <textarea id="story" name="story"  v-model="mainST.state.mision" rows="8" cols="33" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0 mt-2" placeholder="Descripción Misión" ></textarea>
@@ -17,7 +17,7 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-x-2">
+                    <div class="grid md:grid-cols-2 gap-x-2">
                         <div>
                         <label for="marca" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Visión</label>
                         <textarea id="story" name="story"  v-model="mainST.state.vision" rows="8" cols="33" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0 mt-2" placeholder="Descripción Visión" ></textarea>
@@ -28,7 +28,7 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-x-2">
+                    <div class="grid md:grid-cols-2 gap-x-2">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Valores</label>
                         <input type="text" id="nombre"    v-model="itemvalor.title"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Titulo" required />
@@ -44,7 +44,7 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-x-2" >
+                    <div class="grid md:grid-cols-2 gap-x-2" >
                         <div>
                         <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">¿Por que confiar en Nosotros?</label>
                         <input type="text" id="nombre"    v-model="itemconfianza.title"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Titulo" required />
@@ -54,14 +54,17 @@
                         <div>
                             <p>¿Por que confiar en nosotros?</p>
                             <div class="py-2 text-sm px-2" v-for="item in mainST.state.itemsconfianza" >
-                                <p>{{ item.title }}   <div @click="mainST.eliminarItemC(item.title)" class="font-3xl cursor-pointer text-red-500 font-bold px-4"> x</div> </p>
-                                <p>{{ item.description }}</p>
+                                <div class="flex items-center justify-between w-full">
+                                    <p class="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600" >{{ item.title }} </p>
+                                    <div @click="mainST.eliminarItemC(item.title)" class="text-xl  cursor-pointer text-red-700 font-bold px-4"> x</div>
+                                </div>
+                                <p class="line-clamp-3 text-sm/6 text-gray-600" >{{ item.description }}</p>
                             </div>
                         </div>
 
                     </div>
 
-                    <div class="grid grid-cols-2 gap-x-2">
+                    <div class="grid md:grid-cols-2 gap-x-2">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teléfono</label>
                         <input type="text" id="telefono" v-model="mainST.state.contacto.telefono"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Teléfono" required />
@@ -73,7 +76,7 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-x-2">
+                    <div class="grid md:grid-cols-2 gap-x-2">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
                         <input type="text" id="correo" v-model="mainST.state.contacto.correo"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Correo" required />
@@ -86,7 +89,7 @@
                     </div>
 
 
-                    <div class="grid grid-cols-2 gap-x-2">
+                    <div class="grid md:grid-cols-2 gap-x-2">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Facebook</label>
                         <input type="text" id="facebook" v-model="mainST.state.contacto.facebook"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Facebook" required />
@@ -100,7 +103,7 @@
 
 
 
-                    <div class="grid grid-cols-2 gap-x-2">
+                    <div class="grid md:grid-cols-2 gap-x-2">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instagram</label>
                         <input type="text" id="instagram" v-model="mainST.state.contacto.instagram"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Instagram" required />
@@ -113,7 +116,7 @@
                     </div>
 
                     <!-- //direccion -->
-                    <div class="grid grid-cols-2 gap-x-2">
+                    <div class="grid md:grid-cols-2 gap-x-2">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Direccion</label>
                         <input type="text" id="instagram" v-model="mainST.state.contacto.direccion"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Direcion" required />
@@ -126,7 +129,7 @@
                     </div>
 
                     <!-- url youtube -->
-                    <div class="grid grid-cols-2 gap-x-2">
+                    <div class="grid md:grid-cols-2 gap-x-2">
                         <div>
                         <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Url Youtube</label>
                         <input type="text" id="Youtube URL" v-model="mainST.state.contacto.urlyoutube"  class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Youtube URL" required />
@@ -138,7 +141,7 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-x-2 pb-96" >
+                    <div class="grid md:grid-cols-2 gap-x-2 pb-96" >
                         <div class="">
                         <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha limite de oferta</label>
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
@@ -201,6 +204,8 @@
 
         cargarContenidoCloud().then(() => {
             fechaselect.value=mainST.state.contacto.fechaloferta.split('T')[0]
+            mainST.updateitemsconfianza(mainST.groupconfianza);
+            mainST.updateitemsvalores(mainST.groupvalores);
         })
         
         initFlowbite()

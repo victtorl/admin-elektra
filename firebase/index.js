@@ -8,6 +8,7 @@ import { getStorage, ref, uploadBytes, listAll, getDownloadURL, getMetadata,dele
 ///pinia
 
  import { useProductStore } from "../src/stores/formstore"; 
+import { useMainStore } from "../src/stores/contentstore";
 
 
 
@@ -373,3 +374,49 @@ export const deleteProductxId = async (id) => {
         });
 }
 
+//////// CONTENIDO DE LA PAGINA WEB //////////////////
+export const crearDocumentoContenido= async (data) => {
+  try {
+    const docRef = await addDoc(collection(db, 'elektra-web-contenido'), data);
+    console.log("Document written with ID: ", docRef);
+  } catch (e) {
+      console.error("Error adding document: ", e);
+  }
+};
+
+export const editContenidoxId = async ( data) => {
+  const postRef = doc(db, "elektra-web-contenido", 'BF9QUPDJQC0S0qAcnFBX');
+  await setDoc(postRef, data);
+  setDoc(postRef, data)
+      .then(postRef => {
+          console.log("Entire Document has been updated successfully");
+          alert('Documento actualizado')
+      })
+      .catch(error => {
+          console.log(error);
+      })
+}
+
+export const cargarContenidoCloud= async() => {
+  const querySnapshot = await getDocs(collection(db, "elektra-web-contenido"));
+  const mainST=useMainStore()
+  querySnapshot.forEach((doc) => {
+      // prodST.llenarProductos({ id: doc.id, data: doc.data() })
+      console.log(doc.data());
+      mainST.setearState(doc.data())
+      
+  })
+}
+
+
+// //TRAER TODA LA LISTA DE PRODUCTOS
+// export const getAllProducts = async () => {
+//   const prodST = useProductStore()
+//   prodST.limpiarProductos()//limpia previa
+//   const querySnapshot = await getDocs(collection(db, "elektra-web"));
+//   querySnapshot.forEach((doc) => {
+//       prodST.llenarProductos({ id: doc.id, data: doc.data() })
+//   });
+//   return prodST.groupProducts
+// }
+// )

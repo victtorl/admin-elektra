@@ -2,12 +2,14 @@ import { createWebHistory, createRouter } from "vue-router";
 import CrearProducto from '../views/CrearProducto.vue'
 import EditarProducto from "../views/EditarProducto.vue";
 import AllProducts from "../views/AllProducts.vue";
+import AdministrarContenido from "../views/AdministrarContenido.vue";
 
 
 
 const routes = [
     { path: "/", component: AllProducts, meta: { requiresAuth: true }, },
     { path: "/crear-producto", component: CrearProducto, meta: { requiresAuth: true }, },
+    { path: "/administrar-contenido", component: AdministrarContenido, meta: { requiresAuth: true }, },
     { path: "/editar-producto/:id", name:"editar-producto", component: EditarProducto, meta: { requiresAuth: true }, },
 ];
 

@@ -143,7 +143,7 @@ import { useProductStore } from './stores/formstore';
 const navigation = [
   { name: 'Todos los productos', href: '/', icon: NumberedListIcon, current: true },
   { name: 'Crear producto', href: '/crear-producto', icon: PlusIcon, current: false },
-  { name: 'Administrar contenido', href: '#', icon: PlusCircleIcon, current: false },
+  { name: 'Administrar contenido', href: '/administrar-contenido', icon: PlusCircleIcon, current: false },
   // { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
   // { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
   // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },

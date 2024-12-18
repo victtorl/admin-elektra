@@ -37,6 +37,8 @@ const marca=ref('')
 const codigo =ref('')
 const medida =ref('')
 const imagenes=ref([])
+const oferta=ref()
+const description=ref()
 
 
 
@@ -47,11 +49,12 @@ const rules = computed(() => {
         marca:{required},
         codigo: {required},
         medida: {required},
-        imagenes: {required}
+        imagenes: {required},
+        description:{required}
       }
 })
 
-const v$ = useVuelidate(rules, {nombre,marca,codigo,medida,imagenes});
+const v$ = useVuelidate(rules, {nombre,marca,codigo,medida,imagenes,description});
 
 
 
@@ -64,6 +67,7 @@ const enviarDatos=() => {
   medida.value=prodST.newProduct.medida
   imagenes.value=prodST.newProduct.imagenes
   oferta.value=prodST.newProduct.oferta
+  description.value=prodST.newProduct.description
 
   v$.value.$touch();
   if (!v$.value.$error) {

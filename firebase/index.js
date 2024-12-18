@@ -360,6 +360,18 @@ export const editProductxId = async (id, data) => {
         })
 }
 
+const editProductMasivexId = async (id, data) => {
+  const postRef = doc(db, "elektra-web", id);
+  await setDoc(postRef, data);
+  setDoc(postRef, data)
+      .then(postRef => {
+          console.log("Entire Document has been updated successfully");
+      })
+      .catch(error => {
+          console.log(error);
+      })
+}
+
 // ELIMINAR UN PRODUCTO POR ID
 export const deleteProductxId = async (id) => {
         // Create a reference to the file to delete
@@ -420,3 +432,20 @@ export const cargarContenidoCloud= async() => {
 //   return prodST.groupProducts
 // }
 // )
+
+
+export const agregadoMasivodeCampos= async() => {
+
+  // USAR ESTA FUNCION CON MUCHO CUIDADO
+  const prodST = useProductStore()
+  prodST.limpiarProductos()//limpia previa
+  const querySnapshot = await getDocs(collection(db, "elektra-web"));
+  querySnapshot.forEach((doc) => {
+  //el objeto modificado se agrega el nombe del campo y un valor por defecto {...doc.data(),(name_campo,valor)}
+      const objetoModificado={...doc.data(),description:''}
+      console.log(objetoModificado)
+      editProductMasivexId(doc.id,objetoModificado)
+  })
+
+  
+}

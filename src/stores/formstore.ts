@@ -14,6 +14,8 @@ interface IProduct{
   medida:string,
   imagenes:Iimages[],
   oferta:boolean,
+  categoria:string,
+  description:string,
 }
 
 
@@ -69,7 +71,8 @@ export const useProductStore=defineStore("products-store",() => {
   const editProduct: Ref<IEdProduct|null> =ref({} as IEdProduct) 
   ///creo qeu solo se va setear
   function setEditProduct(data: IEdProduct) {
-    editProduct.value = {...editProduct.value, ...data}
+    console.log(data);
+     editProduct.value = {...editProduct.value, ...data}
   }
   function clearEditProduct() {
     editProduct.value = null;

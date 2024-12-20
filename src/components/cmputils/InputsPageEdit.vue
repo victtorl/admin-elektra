@@ -50,6 +50,21 @@
             </div>   
         </div>
 
+
+        <div>
+            <label for="comment" class="block text-sm/6 font-medium text-gray-900">Archivo Pdf (Opcional)</label>
+            <input class="block w-full mb-2 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+            id="small_size" 
+            type="file"
+
+            @change="(event) => handelFileUpload(event)" 
+            >
+            <div v-if="prodST.editProduct.data.fichatecnica!==''" class="w-full flex justify-between" >
+                <a :href="prodST.fichatecnica" target="_blank" rel="noopener noreferrer" class="underline  text-elecktraamarillo bg-elecktranegro px-2 py-0.5 " >Ver Ficha</a>
+                <button @click="EliminarPdfPorUrlFn(prodST.editProduct.data.fichatecnica)" target="_blank" rel="noopener noreferrer" class="underline  text-white bg-red-900 px-2 py-0.5 " >Eliminar Ficha</button>
+            </div>
+        </div>
+
              <!-- text area start -->
             <div>
                 <label for="comment" class="block text-sm/6 font-medium text-gray-900">Descripcion el producto</label>
@@ -66,7 +81,7 @@
     <script setup>
     import { watch,ref } from 'vue';
     import {useProductStore} from '../../stores/formstore'
-    import { ismatchName } from '../../../firebase';
+    import { EliminarPdfPorUrl,uploadPdf, ismatchName } from '../../../firebase';
     import { FwbCheckbox } from 'flowbite-vue'
     
     const prodST=useProductStore()
@@ -94,6 +109,32 @@
     { text: 'Canaletas y Riel Din ranuradas', value: 9 },
     { text: 'Cables', value: 10 },
     ])
+
+
+    ////upload ficha tecnica start
+    const generateId = () => Date.now().toString(35) + Math.random().toString(36).slice(2)
+
+    const handelFileUpload = async (e) => {
+        var files = e.target.files[0] 
+        const metadata = {
+        contentType: e.name,
+        name:e.name
+        };
+        //SUBIR UNA ficchatecnica Y PONERLO en el campo FICHA tecnica -- CHANCAR O SETEAR EL CAMPO fichatecnica DE NEW PRODUCT
+        console.log(files);
+        prodST.setFichaTecnica(await uploadPdf(files,generateId()),metadata)
+        prodST.editProduct.data.fichatecnica=prodST.fichatecnica
+        // prodST.setEditProduct({ 'fichatecnica':prodST.fichatecnica})  
+    };
+
+    const EliminarPdfPorUrlFn=(url) => {
+        EliminarPdfPorUrl(url)
+        prodST.limpiarFichaTecnica()
+        prodST.editProduct.data.fichatecnica=prodST.fichatecnica
+    }
+
+    ///upload ficha tecnica end
+
     
     watch([marca,nombre,codigo,medida,check,selected],() => {
     
@@ -104,7 +145,8 @@
             'medida':medida.value,
             'oferta':check.value,
             'categoria':selected.value,
-            'description':desc.value
+            'description':desc.value,
+            'fichatecnica':prodST.fichatecnica
         })
      
     })

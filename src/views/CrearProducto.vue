@@ -39,6 +39,7 @@ const medida =ref('')
 const imagenes=ref([])
 const oferta=ref()
 const description=ref()
+const fichatecnica=ref()
 
 
 
@@ -68,6 +69,7 @@ const enviarDatos=() => {
   imagenes.value=prodST.newProduct.imagenes
   oferta.value=prodST.newProduct.oferta
   description.value=prodST.newProduct.description
+  fichatecnica.value=prodST.newProduct.fichatecnica
 
   v$.value.$touch();
   if (!v$.value.$error) {
@@ -75,6 +77,7 @@ const enviarDatos=() => {
       guardarProducto(prodST.newProduct).then(()=>alert('Producto agregado'))
       prodST.clearimagess()
       prodST.clearnewProduct()
+      prodST.limpiarFichaTecnica()
       setTimeout(() => {
         location.reload();
       }, 2000);

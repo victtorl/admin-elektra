@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref, type Ref } from "vue";
+import { watch,ref, type Ref } from "vue";
 import {useStorage} from "@vueuse/core";
 import { looseIndexOf } from '@vue/shared';
 
@@ -16,6 +16,7 @@ interface IProduct{
   oferta:boolean,
   categoria:string,
   description:string,
+  fichatecnica:string
 }
 
 
@@ -68,7 +69,16 @@ export const useProductStore=defineStore("products-store",() => {
 
 
   //Store para editar un producto
-  const editProduct: Ref<IEdProduct|null> =ref({} as IEdProduct) 
+  // const editProduct: Ref<IEdProduct|null> =ref({} as IEdProduct) ////DEBERIA IR EN LS
+
+
+  // Inicializa editProduct desde localStorage si existe
+const editProduct: Ref<IEdProduct | null> = ref(
+  localStorage.getItem('editProductElektra')
+    ? JSON.parse(localStorage.getItem('editProductElektra') as string)
+    : null
+);
+
   ///creo qeu solo se va setear
   function setEditProduct(data: IEdProduct) {
     console.log(data);
@@ -77,6 +87,17 @@ export const useProductStore=defineStore("products-store",() => {
   function clearEditProduct() {
     editProduct.value = null;
   }
+  // Observa los cambios en editProduct y actualiza localStorage
+watch(editProduct, (newValue) => {
+  if (newValue) {
+    localStorage.setItem('editProductElektra', JSON.stringify(newValue));
+  } else {
+    localStorage.removeItem('editProductElektra');
+  }
+}, { deep: true });
+
+
+
 
 
   const groupProducts = ref([] as Array<{}|any|IProduct>);
@@ -126,6 +147,25 @@ export const useProductStore=defineStore("products-store",() => {
   }
 
 
+  //FICHA TECNICA
+  const fichatecnica=ref<string>(cargarFichaLocalStorage());
+  function setFichaTecnica(data:any){
+    fichatecnica.value=data
+    guardarFichaLocalStorage()
+   }
+   function limpiarFichaTecnica(){
+    fichatecnica.value=''
+    guardarFichaLocalStorage()
+   }
+
+  function cargarFichaLocalStorage(): string {
+    const storeFicha = localStorage.getItem('elektra-ficha');
+    return storeFicha ? JSON.parse(storeFicha) : '';
+  }
+  function guardarFichaLocalStorage() {
+    localStorage.setItem('elektra-ficha', JSON.stringify(fichatecnica.value));
+  }
+
   return {
         productstore,
         addProduct,
@@ -148,6 +188,10 @@ export const useProductStore=defineStore("products-store",() => {
         editProduct,
         setEditProduct,
         clearEditProduct,
+
+        fichatecnica,
+        setFichaTecnica,
+        limpiarFichaTecnica
   }
   
 })

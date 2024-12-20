@@ -154,6 +154,29 @@ export const uploadImage = async (file,id) => {
         return downloadURL
       })
   }
+
+//Upload image
+export const uploadPdf = async (file,id) => {
+  const storage = getStorage();
+  const PdfRef = ref(storage, `elektra-web-fichas/${id}`)
+
+  return uploadBytes(PdfRef, file)
+    .then(snapshot => {
+      return getDownloadURL(snapshot.ref)
+    })
+    .then(downloadURL => {
+      console.log('Download URL', downloadURL)
+      return downloadURL
+    })
+}
+
+
+export const EliminarPdfPorUrl= (urlpdf) => {
+  const storage=getStorage()
+  const pdfRef = ref(storage, urlpdf)
+  deleteObject(pdfRef).then(() =>console.log('archivo eliminado'))
+  .catch((error) =>console.log("Failed to delete image: ", error))
+}
   
   // Obtener todos las urls de las imagenes
   export const getAllLinksImagesStoragexNameProd = (name) => {
@@ -442,9 +465,25 @@ export const agregadoMasivodeCampos= async() => {
   const querySnapshot = await getDocs(collection(db, "elektra-web"));
   querySnapshot.forEach((doc) => {
   //el objeto modificado se agrega el nombe del campo y un valor por defecto {...doc.data(),(name_campo,valor)}
-      const objetoModificado={...doc.data(),description:''}
+      const objetoModificado={...doc.data(),fichatecnica:''}
       console.log(objetoModificado)
       editProductMasivexId(doc.id,objetoModificado)
+  })
+
+  
+}
+
+export const EliminacionMasivadeCampos= async() => {
+  // USAR ESTA FUNCION CON MUCHO CUIDADO
+  const prodST = useProductStore()
+  prodST.limpiarProductos()//limpia previa
+  const querySnapshot = await getDocs(collection(db, "elektra-web"));
+  querySnapshot.forEach((doc) => {
+  //el objeto modificado se agrega el nombe del campo y un valor por defecto {...doc.data(),(name_campo,valor)}
+      const objetoModificado=doc.data()
+      delete objetoModificado.name_campo
+      console.log(objetoModificado)
+       editProductMasivexId(doc.id,objetoModificado)
   })
 
   

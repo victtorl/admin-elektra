@@ -84,6 +84,7 @@ import InputsPageEdit from '../components/cmputils/InputsPageEdit.vue'
     // }
     editProductxId(prodST.editProduct.id,prodST.editProduct.data)
     prodST.clearimagess()
+    prodST.limpiarFichaTecnica()
     //eliminar de ls
   }
   

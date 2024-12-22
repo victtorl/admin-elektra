@@ -98,7 +98,6 @@ const desc=ref('')
 
 const selected = ref(0)
 const options = ref([
-  { text: 'Otros', value: 0 },
   { text: 'Herramientas para terminales y cables', value: 1 },
   { text: 'Mangas termocontraibles ', value: 2 },
   { text: 'Terminales de compresión', value: 3 },
@@ -110,6 +109,8 @@ const options = ref([
   { text: 'Phoenix Contact', value: 8 },
   { text: 'Canaletas y Riel Din ranuradas', value: 9 },
   { text: 'Cables', value: 10 },
+  { text: 'Otros', value: 11 },
+
 ])
 
 ////upload ficha tecnica start

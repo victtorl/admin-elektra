@@ -177,11 +177,12 @@
                             </svg>
                         </div>
                         <!-- <input datepicker id="default-datepicker"  type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"> -->
-                        <input type="date" name="bday"  v-model="fechaselect"  class="text-gray-800">
+                        <input type="date" v-model="selectedDate"   class="text-gray-800">
                         </div>
                         <div>
                             <p class="mt-3 md:mt-0 text-sm/4 font-semibold text-gray-900 group-hover:text-gray-600"  >Fecha seleccionada</p>
-                            <p class="text-sm px-2 py-3">{{ fechaselect}}</p>
+                            <p class="text-sm px-2 py-3">{{ formattedDate}}</p>
+                            <!-- <p>{{ selectedDate }}</p> -->
                         </div>
                     </div>
                     <button type="button" class="mb-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
@@ -235,7 +236,7 @@
     <script setup>
     import { initFlowbite } from 'flowbite'
     import { FwbButton, FwbModal } from 'flowbite-vue'
-    import { watch,ref,reactive,onMounted } from 'vue';
+    import { watch,ref,reactive,onMounted,computed } from 'vue';
     import { useMainStore } from '../../stores/contentstore';
     import { cargarContenidoCloud, crearDocumentoContenido, editContenidoxId, } from '../../../firebase';
 
@@ -266,7 +267,9 @@
     onMounted(() => {
 
         cargarContenidoCloud().then(() => {
-            fechaselect.value=mainST.state.contacto.fechaloferta.split('T')[0]
+            // const isoDate = "2024-12-02T00:00:00.000Z";
+            // const date = new Date(isoDate);
+            selectedDate.value=mainST.state.contacto.fechaloferta.split('T')[0] //al cargar iniciar asi 
             mainST.updateitemsconfianza(mainST.groupconfianza);
             mainST.updateitemsvalores(mainST.groupvalores);
         })
@@ -301,6 +304,14 @@
         itemconfianza.description=''
     }
 
+    const selectedDate = ref("");
+      // Computed para formatear la fecha en ISO
+      const formattedDate = computed(() => {
+      if (!selectedDate.value) return ""; // Maneja el caso de un input vacío
+      const date = new Date(selectedDate.value);
+      mainST.updateContacto('fechaloferta',date.toISOString())
+      return date.toISOString(); // Convierte la fecha al formato ISO
+    });
 
     
     watch([
@@ -316,7 +327,7 @@
 
         mainST.state.itemsvalores,
         mainST.state.itemsconfianza,
-        fechaselect.value,
+        fechaselect.value
     ],() => {
     
     mainST.updatePrimitiveField('mision',mision.value)
@@ -328,14 +339,15 @@
     mainST.updateContacto('instagram', instagram.value);
     mainST.updateContacto('direccion', direccion.value);
     mainST.updateContacto('urlyoutube', urlyoutube.value);
-    mainST.updateContacto('fechaloferta',(new Date(fechaselect.value)).toISOString())
+    mainST.updateContacto('fechaloferta',new Date(fechaselect.value).toISOString())
 
 
 
     mainST.updateitemsvalores(mainST.groupvalores)
     mainST.updateitemsconfianza(mainST.groupconfianza)
 
-
+    console.log('HOla comoestas');
+    
         
     })
 

@@ -69,7 +69,7 @@ const removeItem = async (url) => {
 
 
 onMounted(() => {
-  prodST.setnewProduct({ 'imagenes':prodST.images}) 
+//   prodST.setnewProduct({ 'imagenes':prodST.images}) 
 })
 
 </script>

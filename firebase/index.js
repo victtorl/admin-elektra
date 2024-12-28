@@ -9,6 +9,7 @@ import { getStorage, ref, uploadBytes, listAll, getDownloadURL, getMetadata,dele
 
  import { useProductStore } from "../src/stores/formstore"; 
 import { useMainStore } from "../src/stores/contentstore";
+import { useUtilStore } from "../src/stores/utils";
 
 
 
@@ -376,7 +377,6 @@ export const editProductxId = async (id, data) => {
     setDoc(postRef, data)
         .then(postRef => {
             console.log("Entire Document has been updated successfully");
-            alert('Documento actualizado')
         })
         .catch(error => {
             console.log(error);
@@ -487,4 +487,26 @@ export const EliminacionMasivadeCampos= async() => {
   })
 
   
+}
+
+
+export const getMetadataFile=async(urlfire)=>{
+
+  // Create a reference to the file whose metadata we want to retrieve
+  const storage=getStorage()
+  const pdfRef = ref(storage, urlfire)
+
+// Get metadata properties
+getMetadata(pdfRef)
+  .then((metadata) => {
+    // Metadata now contains the metadata for 'images/forest.jpg'
+    console.log(metadata);
+    const metaST=useUtilStore()
+    metaST.setmetadata(metadata)
+    return metadata
+  })
+  .catch((error) => {
+    // Uh-oh, an error occurred!
+    return 0
+  });
 }

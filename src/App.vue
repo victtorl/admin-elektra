@@ -158,11 +158,16 @@ const sidebarOpen = ref(false)
 
 const route=useRoute()
 
-watch(()=>route.path,() => {
+watch(()=>route.path,(newPath,oldPath) => {
    //valida que un usuario si cambia de ruta no quede restos de imagenes en ls ||evaluar
     const prodST=useProductStore()
-    prodST.clearimagess()
-    console.log(route.fullPath)
+     console.log(newPath)
+     console.log(oldPath);
+     
+    if(newPath!=='/crear-producto'){  ///si se sale de creacion a otro como edicon o cualquier ruta se limpia si solo refresca NO
+      prodST.clearimagess()
+    }
+
 })
 
 

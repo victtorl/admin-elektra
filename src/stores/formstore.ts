@@ -135,17 +135,16 @@ watch(editProduct, (newValue) => {
    images.value =[]
    saveImagesToLocalStorage()
    }
-     // Función para cargar imágenes desde localStorage
+  // Función para cargar imágenes desde localStorage
   function loadImagesFromLocalStorage(): string[] {
     const storedImages = localStorage.getItem('images-elektra');
     return storedImages ? JSON.parse(storedImages) : [];
   }
-
   // Función para sincronizar imágenes en localStorage
   function saveImagesToLocalStorage() {
     localStorage.setItem('images-elektra', JSON.stringify(images.value));
   }
-
+  
 
   //FICHA TECNICA
   const fichatecnica=ref<string>(cargarFichaLocalStorage());

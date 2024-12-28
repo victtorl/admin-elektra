@@ -77,7 +77,7 @@
 
 
 
-                        <p class="ml-1 text-md " >Editar </p>
+                        <p class="ml-1 text-md " >Editar</p>
                     
                     </button>
                 </div>
@@ -129,9 +129,9 @@ const prodST=useProductStore()
 const gotoEditProduct=(itemedit) => {
     prodST.setEditProduct(itemedit)
     router.push({ name: 'editar-producto', params: { id: itemedit.id } })
-    //aseguras que el auxiliar de imagenes este limpio y le metes las imagenes que vienen del server
-    prodST.clearimagess()
-    prodST.setimages(itemedit.data.imagenes)
+    //aseguras que el auxiliar de imagenesEd este limpio y le metes las imagenes que vienen del server
+    prodST.clearimagessEd()
+    prodST.setimagesEd(itemedit.data.imagenes)
 }
 
 

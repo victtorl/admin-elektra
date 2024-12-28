@@ -10,6 +10,7 @@
               </svg>
               <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
               <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+              <div v-if="seeloader" class="w-166 h-auto loader"></div>
           </div>
           <input
                 type="file" class="hidden"
@@ -27,7 +28,7 @@
   
   
   <div class="grid grid-cols-2 md:grid-cols-3 gap-4  py-4 md:py-8 ">
-            <div  v-for="(item,i) in prodST.editProduct.data.imagenes" class="bg-blue-800 relative" 
+            <div  v-for="(item,i) in prodST.editProduct.data.imagenes" class=" relative" 
             :key="index"  >
                 <img :src="item" id="output"  class="h-36 w-full rounded-lg object-cover "  alt="">
                 <p class="h-8 w-8 bg-red-500 rounded-full font-bold flex items-center justify-center absolute top-0 right-0 hover:bg-red-900 cursor-pointer" 
@@ -43,36 +44,55 @@
   
   
   <script setup>
-  import { onMounted } from 'vue';
+  import { onMounted,ref } from 'vue';
   import { uploadImage, EliminarImagenPorUrl, rebootImages } from '../../../firebase';
   import { useProductStore } from '../../stores/formstore';
   const prodST=useProductStore()
   
   
-  
+  const seeloader=ref(false)
+
   const generateId = () => Date.now().toString(35) + Math.random().toString(36).slice(2)
   
   const handelFileUpload = async (e) => {
+      seeloader.value=true
       var files = e.target.files[0] 
-      //SUBIR UNA IMAGEN Y PONERLO AL ARRAY DE IMAGENES -- CHANCAR O SETEAR EL CAMPO IMAFENES DE NEW PRODUCT
-      prodST.setimages(await uploadImage(files,generateId()))
-      // prodST.setEditProduct({ 'imagenes':prodST.editProduct.data.imagenes}) 
-      prodST.editProduct.data.imagenes=prodST.images
+      await uploadImage(files,generateId()).then(res=>{
+                prodST.setimagesEd(res)
+                prodST.editProduct.data.imagenes=prodST.imagesEd
+                seeloader.value=false
+      })
 
   };
   
   
   const removeItem = async (url) => {
     EliminarImagenPorUrl(url) //eliminas de la web
-    prodST.deletebycontent(url) //eliminas de local storage
-    // prodST.setEditProduct({ 'imagenes':prodST.editProduct.data.imagenes}) //asociar al edit product 
-    prodST.editProduct.data.imagenes=prodST.images
+    prodST.deletebycontentEd(url) //eliminas de local storage
+    prodST.editProduct.data.imagenes=prodST.imagesEd
   };
   
   
   
   onMounted(() => {
-    prodST.setnewProduct({ 'imagenes':prodST.images}) 
+
+    prodST.editProduct.data.imagenes=prodST.imagesEd 
   })
   
   </script>
+
+<style>
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid lightblue;
+  border-right-color: orange;
+  animation: l2 1s infinite linear;
+}
+@keyframes l2 {to{transform: rotate(1turn)}}
+
+
+</style>

@@ -2,7 +2,7 @@
 
   <div class="w-full h-full  font-popi p-6">
 
-    <p class="mb-2 bg-elecktranegro text-elecktraamarillo font-semibold rounded-lg text-center py-1 ">EDITAR PRODUCTO
+    <p class="mb-2 bg-elecktranegro text-elecktraamarillo font-semibold rounded-lg text-center py-1 ">Edición de producto
     </p>
 
     <div class="grid md:grid-cols-2 gap-x-6 ">
@@ -173,8 +173,10 @@
 
 
     async function processData() {
-      const result = await getMetadataFile(prodST.editProduct.data.fichatecnica);
-      console.log("Resultado:", result); // "Datos obtenidos"
+      if(prodST.editProduct.data.fichatecnica){
+        const result = await getMetadataFile(prodST.editProduct.data.fichatecnica);
+        console.log("Resultado:", result); // "Datos obtenidos"
+      }
     }
     processData()
 
@@ -215,10 +217,7 @@
     if (!v$.value.$error) {
       if(prodST.editProduct.data.imagenes.length>0){
         editProductxId(prodST.editProduct.id,prodST.editProduct.data).then(()=>toast.success('Editado con éxito ', {autoClose: 1000,position:'bottom-right'}))
-        prodST.clearimagess()
         prodST.limpiarFichaTecnica()
-
-
       }else{
         toast.error('Agregar imagenes ', {autoClose: 1000,position:'bottom-right'}) 
       }

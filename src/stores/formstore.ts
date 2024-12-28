@@ -144,6 +144,38 @@ watch(editProduct, (newValue) => {
   function saveImagesToLocalStorage() {
     localStorage.setItem('images-elektra', JSON.stringify(images.value));
   }
+
+  const imagesEd = ref<string[]>(loadImagesFromLocalStorageEd());
+  function setimagesEd(data: any) {
+       imagesEd.value = imagesEd.value.concat(data);
+       saveImagesToLocalStorageEd()
+   }
+   function filterimagesEd(data: number) {
+    const newArr= imagesEd.value.filter(u=>looseIndexOf(imagesEd.value,u)!=data)
+    imagesEd.value=newArr
+   }
+   function deletebycontentEd(data: any) { // data puede ser cualquier contenido pero en este caso usaremos urls 
+    const newArr= imagesEd.value.filter(u=>u!=data)
+    imagesEd.value=newArr
+    saveImagesToLocalStorageEd()
+   }
+   function updateAllimagesEd(data:any){
+    imagesEd.value=data
+    saveImagesToLocalStorageEd()
+   }
+   function clearimagessEd() {
+   imagesEd.value =[]
+   saveImagesToLocalStorageEd()
+   }
+  // Función para cargar imágenes desde localStorage
+  function loadImagesFromLocalStorageEd(): string[] {
+    const storedImages = localStorage.getItem('images-elektraEd');
+    return storedImages ? JSON.parse(storedImages) : [];
+  }
+  // Función para sincronizar imágenes en localStorage
+  function saveImagesToLocalStorageEd() {
+    localStorage.setItem('images-elektraEd', JSON.stringify(imagesEd.value));
+  }
   
 
   //FICHA TECNICA
@@ -183,6 +215,12 @@ watch(editProduct, (newValue) => {
         updateAllimages,
         clearimagess,
         deletebycontent,
+
+        imagesEd,
+        setimagesEd,
+        updateAllimagesEd,
+        clearimagessEd,
+        deletebycontentEd,
 
         editProduct,
         setEditProduct,

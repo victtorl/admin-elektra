@@ -139,6 +139,7 @@ import {
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import { useRoute } from 'vue-router';
 import { useProductStore } from './stores/formstore';
+import { EliminarImagenPorUrl } from '../firebase';
 
 const navigation = [
   { name: 'Todos los productos', href: '/', icon: NumberedListIcon, current: true },
@@ -160,13 +161,11 @@ const route=useRoute()
 
 watch(()=>route.path,(newPath,oldPath) => {
    //valida que un usuario si cambia de ruta no quede restos de imagenes en ls ||evaluar
-    const prodST=useProductStore()
+ 
      console.log(newPath)
      console.log(oldPath);
      
-    if(newPath!=='/crear-producto'){  ///si se sale de creacion a otro como edicon o cualquier ruta se limpia si solo refresca NO
-      prodST.clearimagess()
-    }
+  
 
 })
 

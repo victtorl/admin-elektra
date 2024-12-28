@@ -1,8 +1,7 @@
 <template>
 
   <div class="w-full h-full font-popi  p-6">
-    <p class="mb-2 bg-elecktranegro text-elecktraamarillo font-semibold rounded-lg text-center py-1 ">CREAR PRODUCTO
-      NUEVO</p>
+    <p class="mb-2 bg-elecktranegro text-elecktraamarillo font-semibold rounded-lg text-center py-1 ">Creación de nuevo producto</p>
     <div class="grid md:grid-cols-2 gap-x-6">
       <div class="flex flex-col gap-y-4">
         <form>
@@ -216,9 +215,9 @@ const enviarDatos=() => {
     if(prodST.newProduct.imagenes.length>0){
 
       guardarProducto(prodST.newProduct).then(()=>toast.success('Guardado con éxito ', {autoClose: 1000,position:'bottom-right'}))
-      prodST.clearimagess()
       prodST.clearnewProduct()
       prodST.limpiarFichaTecnica()
+      prodST.clearimagess()
       setTimeout(() => {
         location.reload();
       }, 2000);
@@ -234,8 +233,10 @@ const enviarDatos=() => {
 }
 
 async function processData() {
-  const result = await getMetadataFile(prodST.fichatecnica);
-  console.log("Resultado:", result); // "Datos obtenidos"
+  if(prodST.fichatecnica!==''){
+    const result = await getMetadataFile(prodST.fichatecnica);
+    console.log("Resultado:", result); // "Datos obtenidos"
+  }
 }
 processData()
 

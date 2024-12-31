@@ -7,10 +7,10 @@ import AdministrarContenido from "../views/AdministrarContenido.vue";
 
 
 const routes = [
-    { path: "/", component: AllProducts, meta: { requiresAuth: true }, },
-    { path: "/crear-producto", component: CrearProducto, meta: { requiresAuth: true }, },
-    { path: "/administrar-contenido", component: AdministrarContenido, meta: { requiresAuth: true }, },
-    { path: "/editar-producto/:id", name:"editar-producto", component: EditarProducto, meta: { requiresAuth: true }, },
+    { path: "/", component: AllProducts},
+    { path: "/crear-producto", component: CrearProducto},
+    { path: "/administrar-contenido", component: AdministrarContenido },
+    { path: "/editar-producto/:id", name:"editar-producto", component: EditarProducto},
 ];
 
 const history = createWebHistory();

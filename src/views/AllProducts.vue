@@ -31,6 +31,9 @@
                 <a  class="font-medium text-lg leading-5 text-center hover:text-black transition duration-500 pt-2 pb-1 ease-in-out inline-block">
                     {{ item.data.marca }}
                 </a>
+
+     
+
                 <div class="relative"><a href="#">
                         <img class="w-full h-44 bg-elecktraamarillo  p-6 z-100"
                             :src="item.data.imagenes[0]"
@@ -45,6 +48,13 @@
                             Ver producto
                         </div>
                     </a> -->
+
+                    <a v-if="item.data.oferta">
+                      <div
+                        class="flex items-center w-full  absolute top-0 text-xs  bg-[#f91515] pl-2 sm:px-4 py-1 text-white font-semibold  hover:bg-elecktraamarillo hover:text-black transition duration-500 ease-in-out">
+                        <p class="mt-0 text-xs text-center w-full sm:text-[16px] ">Producto en oferta</p>
+                      </div>
+                    </a>
                 </div>
                 <div class="px-6 py-4 mb-auto">
                     <a href="#"

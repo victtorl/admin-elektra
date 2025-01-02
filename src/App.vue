@@ -83,11 +83,12 @@
         <div class="h-6 w-px bg-gray-900/10 lg:hidden" aria-hidden="true" />
 
         <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-          <form class="grid flex-1 grid-cols-1 items-center " action="#" method="GET">
+          <!-- <form class="grid flex-1 grid-cols-1 items-center " action="#" method="GET">
             <input type="search" name="search" aria-label="Search" class="  col-start-1 row-start-1 block size-full  rounded-lg border-[1.5px] border-elecktranegro h-12 pl-8 text-base text-gray-900 outline-none placeholder:text-gray-400 sm:text-sm/6" placeholder="Buscar producto.." />
             <MagnifyingGlassIcon class="pointer-events-none col-start-1  row-start-1  pl-2 size-6 self-center text-gray-400" aria-hidden="true" />
-          </form>
+          </form> -->
           <div class="flex items-center gap-x-4 lg:gap-x-6">
+            <BuscadorGozu></BuscadorGozu>
 
             <!-- Separator -->
             <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10" aria-hidden="true" />
@@ -140,6 +141,7 @@ import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import { useRoute } from 'vue-router';
 import { useProductStore } from './stores/formstore';
 import { EliminarImagenPorUrl } from '../firebase';
+import BuscadorGozu from './components/cmputils/BuscadorGozu.vue';
 
 const navigation = [
   { name: 'Todos los productos', href: '/', icon: NumberedListIcon, current: true },

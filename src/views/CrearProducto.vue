@@ -15,13 +15,27 @@
                 placeholder="" required />
               <!-- <label v-if="varmatch" class="text-red-800 text-md  font-normal">Existe un producto con este nombre!!</label> -->
             </div>
+
+            <!-- select MARCA start -->
             <div>
-              <label for="marca" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marca</label>
-              <input type="text" id="marca" v-model="stateform.marca"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5  "
-                :class="{ 'border-red-500 border-2': v$.marca.$errors.length }"
-                placeholder="" required />
+              <label htmlFor="categoria" class="block text-sm/6 font-medium text-gray-900">
+                Marca
+              </label>
+              <div class="mt-2 grid grid-cols-1">
+                <select v-model="stateform.selectedmarca" id="options"
+                 :class="{ 'border-red-500 border-2': v$.selectedmarca.$errors.length }"
+                  class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                  <option v-for="option in optionsmarca" :key="option.value" :value="option.text">
+                    {{ option.text }}
+                  </option>
+                </select>
+                <ChevronDownIcon aria-hidden="true"
+                  class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" />
+              </div>
             </div>
+            <!-- select MARCA end -->
+
+
             <div>
               <label for="codigo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Codigo</label>
               <input type="text" id="codigo" v-model="stateform.codigo"
@@ -124,6 +138,7 @@ const prodST=useProductStore()
 
 const stateform=reactive({
   nombre:'',
+  selectedmarca:'',
   marca:'',
   codigo:'',
   medida:'',
@@ -147,6 +162,24 @@ const options = ref([
   { text: 'Phoenix Contact', value: 8 },
   { text: 'Canaletas y Riel Din ranuradas', value: 9 },
   { text: 'Cables', value: 10 },
+  
+])
+
+const selectedmarca=ref(Number)
+const optionsmarca = ref([
+  { text: 'Marca nacional', value: 0 },
+  { text: 'Marca importada', value: 1 },
+  { text: 'ABB', value: 2 },
+  { text: 'Bals ', value: 3 },
+  { text: 'Hont', value: 4 },
+  { text: 'Indecco', value: 5 },
+  { text: 'Siemens', value: 6 },
+  { text: 'Phoenix', value: 7 },
+  { text: 'Rittal', value: 8 },
+  { text: 'Plastic', value: 9 },
+  { text: 'Starker', value: 10 },
+  { text: 'Schein', value: 11 },
+  { text: 'Woer', value: 12 },
   
 ])
 
@@ -180,7 +213,7 @@ const EliminarPdfPorUrlFn=() => {
 const rules = computed(() => {
     return {
         nombre: {required},
-        marca:{required},
+        selectedmarca:{required},
         codigo: {required},
         medida: {required},
         description:{required}
@@ -190,11 +223,11 @@ const rules = computed(() => {
 const v$ = useVuelidate(rules,stateform);
 
 
-watch([stateform,selected,check],() => {
+watch([stateform,selectedmarca,check],() => {
 
 prodST.setnewProduct({
     'nombre':stateform.nombre,
-    'marca':stateform.marca,
+    'marca':stateform.selectedmarca,
     'codigo':stateform.codigo,
     'medida':stateform.medida,
     'fichatecnica':prodST.fichatecnica,
@@ -203,8 +236,6 @@ prodST.setnewProduct({
     'categoria':selected.value,
     'imagenes':prodST.newProduct.imagenes,
 })
-
-
 
 })
 

@@ -34,30 +34,6 @@
 
                     <div class="w-full border-t-2 border-gray-500" ></div>
 
-                    <div class="grid md:grid-cols-2 gap-x-4 ">
-                        <div>
-                        <label for="nombre" class="block mb-2 text-sm/4 font-semibold text-gray-900 dark:text-white">Valores</label>
-                        <input type="text" id="nombre"    v-model="itemvalor.title"  class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0" placeholder="Titulo" required />
-                        <textarea id="story" name="story" v-model="itemvalor.description" rows="3" cols="33" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg  block w-72 prevsm:w-full p-2.5 border-transparent focus:border-transparent focus:ring-0 mt-4" placeholder="Descripción" ></textarea>
-                        <button
-                            @click="agregarValor"
-                            type="button"
-                            class="rounded-md bg-indigo-600 px-3 py-2 mt-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                        >
-                        Agregar item valor
-                        </button>
-                        </div>
-                        <div >
-                            <p class="mt-3 md:mt-0 text-sm/4 font-semibold text-gray-900 group-hover:text-gray-600"  >Valores</p>
-                            <div class="py-2 md:py-0 md:pt-2 text-sm " v-for="item in mainST.state.itemsvalores" >
-                                <div class="flex items-center justify-between w-72 prevsm:w-full">
-                                    <p class="mt-3 md:mt-0 text-lg/2 font-semibold text-gray-900 group-hover:text-gray-600" >{{ item.title }} </p>
-                                    <div @click="selectItemDeleteV(item)" class="text-xl  cursor-pointer text-red-700 font-bold px-4"> x</div>
-                                </div>
-                                <p class="leading-4  text-sm/8 text-black w-72 prevsm:w-full" >{{ item.description }}</p>
-                            </div>
-                        </div>
-                    </div>
 
                      <!-- inputs valores start -->
                      <div class="grid md:grid-cols-1  gap-x-4" >

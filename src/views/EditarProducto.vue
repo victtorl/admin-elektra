@@ -219,18 +219,18 @@
 
 const selectedmarca=ref(Number)
 const optionsmarca = ref([
-  { text: 'Marca nacional', value: 0 },
-  { text: 'Marca importada', value: 1 },
+{ text: 'Marca Nacional', value: 0 },
+  { text: 'Marca Importada', value: 1 },
   { text: 'ABB', value: 2 },
   { text: 'Bals ', value: 3 },
   { text: 'Hont', value: 4 },
-  { text: 'Indecco', value: 5 },
+  { text: 'Indeco', value: 5 },
   { text: 'Siemens', value: 6 },
-  { text: 'Phoenix', value: 7 },
+  { text: 'Phoenix Contact', value: 7 },
   { text: 'Rittal', value: 8 },
-  { text: 'Plastic', value: 9 },
+  { text: 'Sbs Plastic Electric', value: 9 },
   { text: 'Starker', value: 10 },
-  { text: 'Schein', value: 11 },
+  { text: 'Schneider Electric', value: 11 },
   { text: 'Woer', value: 12 },
   
 ])

@@ -438,8 +438,11 @@ export const cargarContenidoCloud= async() => {
   querySnapshot.forEach((doc) => {
       // prodST.llenarProductos({ id: doc.id, data: doc.data() })
       console.log(doc.data());
+      console.log(doc.data().itemsconfianza);
+      console.log(doc.data().itemsvalores);
+      mainST.llenargroupvalores(doc.data().itemsvalores)
+      mainST.llenargroupconfianza(doc.data().itemsconfianza)
       mainST.setearState(doc.data())
-      
   })
 }
 

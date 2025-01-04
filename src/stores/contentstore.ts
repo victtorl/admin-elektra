@@ -119,6 +119,10 @@ export const useMainStore = defineStore('main-store-elektra', () => {
     const groupvalores = ref<IValores[]>(
       JSON.parse(localStorage.getItem('elektravalores') || '[]')
     );
+    const llenargroupvalores = (newitemsvalores: IValores[]) => {
+      groupvalores.value = newitemsvalores;
+      saveToLocalStorage();
+    };
       // Guarda los cambios del estado automáticamente en localStorage
     watch(
       groupvalores,
@@ -145,6 +149,10 @@ export const useMainStore = defineStore('main-store-elektra', () => {
     const groupconfianza = ref<IValores[]>(
       JSON.parse(localStorage.getItem('elektraconfianza') || '[]')
     );
+    const llenargroupconfianza = (newitemsvalores: IValores[]) => {
+      groupconfianza.value = newitemsvalores;
+      saveToLocalStorage();
+    };
       // Guarda los cambios del estado automáticamente en localStorage
     watch(
       groupconfianza,
@@ -177,13 +185,13 @@ export const useMainStore = defineStore('main-store-elektra', () => {
       updateContacto,
 
       groupvalores,
-
+      llenargroupvalores,
       agregarItemV,
       eliminarItemV,
       obtenerItemsV,
 
       groupconfianza,
-
+      llenargroupconfianza,
       agregarItemC,
       eliminarItemC,
       obtenerItemsC,

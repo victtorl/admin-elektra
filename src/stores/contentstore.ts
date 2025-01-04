@@ -140,8 +140,8 @@ export const useMainStore = defineStore('main-store-elektra', () => {
     };
 
     // Función para eliminar un elemento por IDentidad de objeto
-    const eliminarItemV = (title:string) => {
-      groupvalores.value = groupvalores.value.filter((item) => item.title!=title);
+    const eliminarItemV = (u:IValores) => {
+      groupvalores.value = groupvalores.value.filter((item) => item!=u);
       updateitemsvalores(groupvalores.value)
     };
 

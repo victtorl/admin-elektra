@@ -201,20 +201,20 @@
     processData()
 
     const options = ref([
-    { text: 'Otros', value: 0 },
-    { text: 'Herramientas para terminales y cables', value: 1 },
-    { text: 'Mangas termocontraibles ', value: 2 },
-    { text: 'Terminales de compresión', value: 3 },
-    { text: 'Terminales sobremoldeados', value: 3 },
-    { text: 'Cintillos y Espirales', value: 4 },
-    { text: 'Enchufes y Tomas Industriales', value: 5 },
-    { text: 'Térmicos', value: 6 },
-    { text: 'Productos Rittal', value: 7 },
-    { text: 'Phoenix Contact', value: 8 },
-    { text: 'Canaletas y Riel Din ranuradas', value: 9 },
-    { text: 'Cables', value: 10 },
-
-    ])
+  { text: 'Otros', value: 0 },
+  { text: 'Herramientas para terminales y cables', value: 1 },
+  { text: 'Mangas termocontraibles ', value: 2 },
+  { text: 'Terminales de compresión', value: 3 },
+  { text: 'Terminales sobremoldeados', value: 4 },
+  { text: 'Cintillos y Espirales', value: 5 },
+  { text: 'Enchufes y Tomas Industriales', value: 6 },
+  { text: 'Térmicos', value: 7 },
+  { text: 'Productos Rittal', value: 8 },
+  { text: 'Phoenix Contact', value: 9 },
+  { text: 'Canaletas y Riel Din ranuradas', value: 10 },
+  { text: 'Cables', value: 11 },
+  
+])
 
 
 const selectedmarca=ref(Number)

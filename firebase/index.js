@@ -513,3 +513,25 @@ getMetadata(pdfRef)
     return 0
   });
 }
+
+
+
+//TRAER TODA LA LISTA DE PRODUCTOS que seran puestos para el buscador
+export const getAllProductsFind = async () => {
+  const prodST = useProductStore()
+  prodST.limpiarProductosSearch()//limpia previa
+  const querySnapshot = await getDocs(collection(db, "elektra-web"));
+  querySnapshot.forEach((doc) => {
+      
+    prodST.llenarProductosSearch({ id: doc.id, data: doc.data() })
+    //  if(isActiveOffer()){
+    //   prodST.llenarProductosSearch({ id: doc.id, data: doc.data() })
+    //  }else{
+    //    doc.data().oferta==false?prodST.llenarProductosSearch({ id: doc.id, data: doc.data() }):0
+
+    //  }
+      // console.log(doc.data().oferta);
+  });
+
+  return prodST.groupProductsSearch
+}

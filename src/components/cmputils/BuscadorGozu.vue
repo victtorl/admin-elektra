@@ -58,12 +58,10 @@ import { useRoute, useRouter } from 'vue-router'
 
   const filteredItems = computed(() => {
   if(searchQuery.value == ''){
-    return prodST.groupProducts.slice(0,2)
+    return prodST.groupProductsSearch.slice(0,2)
   }else{
-    console.log(prodST.groupProducts.filter((item) =>item.data.nombre.toLowerCase().includes(searchQuery.value.toLowerCase())));
-    
-    return data.value.filter((item) =>
-    item.data.nombre.toLowerCase().includes(searchQuery.value.toLowerCase()))
+    // console.log(prodST.groupProductsSearch.filter((item) =>item.data.nombre.toLowerCase().includes(searchQuery.value.toLowerCase())));
+    return prodST.groupProductsSearch.filter((item) =>item.data.nombre.toLowerCase().includes(searchQuery.value.toLowerCase()))
   }
 });
   
@@ -71,7 +69,7 @@ import { useRoute, useRouter } from 'vue-router'
   const selectResult = (result) => {
     window.open(`/editar-producto/${result.id}`,'_self')
     const prodST = useProductStore()
-    const aux = prodST.groupProducts.filter(u => u.id == result.id)
+    const aux = prodST.groupProductsSearch.filter(u => u.id == result.id)
     prodST.setEditProduct(aux[0])
     prodST.clearimagessEd()
     prodST.setimagesEd(aux[0].data.imagenes)

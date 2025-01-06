@@ -111,6 +111,13 @@ watch(editProduct, (newValue) => {
   }
 
 
+  const groupProductsSearch = ref([] as Array<{}|any|IProduct>);
+  function llenarProductosSearch(itm:IProduct){
+      groupProductsSearch.value = groupProductsSearch.value.concat(itm)
+  }
+  function limpiarProductosSearch(){
+      groupProductsSearch.value=[]
+  }
 
 
   const images = ref<string[]>(loadImagesFromLocalStorage());
@@ -209,6 +216,11 @@ watch(editProduct, (newValue) => {
         groupProducts,
         llenarProductos,
         limpiarProductos,
+
+        groupProductsSearch,
+        llenarProductosSearch,
+        limpiarProductosSearch,
+
 
         images,
         setimages,

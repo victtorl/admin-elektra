@@ -140,7 +140,7 @@ import {
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import { useRoute } from 'vue-router';
 import { useProductStore } from './stores/formstore';
-import { EliminarImagenPorUrl } from '../firebase';
+import { EliminarImagenPorUrl, getAllProductsFind } from '../firebase';
 import BuscadorGozu from './components/cmputils/BuscadorGozu.vue';
 
 const navigation = [
@@ -160,6 +160,8 @@ const userNavigation = [
 const sidebarOpen = ref(false)
 
 const route=useRoute()
+
+getAllProductsFind()
 
 watch(()=>route.path,(newPath,oldPath) => {
    //valida que un usuario si cambia de ruta no quede restos de imagenes en ls ||evaluar
